@@ -160,6 +160,14 @@ function App() {
               <h3>Result</h3>
               <p><strong>Disease:</strong> {result.disease}</p>
               <p><strong>Confidence:</strong> {result.confidence}%</p>
+
+              {result.heatmap && (
+                <div style={{ marginTop: '15px' }}>
+                  <p style={{ fontWeight: 'bold' }}>AI Focus Area:</p>
+                  <img src={result.heatmap} alt="AI heatmap" style={{ maxWidth: '100%', borderRadius: '8px' }} />
+                  <p style={{ fontSize: '12px', color: 'gray' }}>Red/yellow areas show where the AI detected disease patterns</p>
+                </div>
+              )}
             </>
           )}
         </div>

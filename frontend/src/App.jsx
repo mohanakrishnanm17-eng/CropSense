@@ -15,6 +15,11 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState(null);
+  const [weatherError, setWeatherError] = useState(null);
+  const [weatherLoading, setWeatherLoading] = useState(false);
+
   const handleSendOtp = async () => {
     setAuthError(null);
     try {
@@ -89,6 +94,59 @@ function App() {
     }
   };
 
+  const fetchWeatherByQuery = async (queryString) => {
+    setWeatherLoading(true);
+    setWeatherError(null);
+    setWeather(null);
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/weather?${queryString}`);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch weather');
+      }
+
+      setWeather(data);
+    } catch (err) {
+      setWeatherError(err.message);
+    } finally {
+      setWeatherLoading(false);
+    }
+  };
+
+  const handleCheckWeather = () => {
+    if (!city) return;
+    fetchWeatherByQuery(`city=${encodeURIComponent(city)}`);
+  };
+
+  const handleUseMyLocation = () => {
+    if (!navigator.geolocation) {
+      setWeatherError('Location detection is not supported on this browser.');
+      return;
+    }
+
+    setWeatherLoading(true);
+    setWeatherError(null);
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        fetchWeatherByQuery(`lat=${latitude}&lon=${longitude}`);
+      },
+      (err) => {
+        setWeatherLoading(false);
+        setWeatherError('Could not detect your location. Please allow location access or enter your city manually.');
+      }
+    );
+  };
+
+  const alertColor = (level) => {
+    if (level === 'high') return '#ff4d4d';
+    if (level === 'medium') return 'orange';
+    return 'green';
+  };
+
   if (!user) {
     return (
       <div style={{ padding: '40px', textAlign: 'center', maxWidth: '400px', margin: '0 auto' }}>
@@ -133,6 +191,7 @@ function App() {
     <div style={{ padding: '40px', textAlign: 'center', maxWidth: '500px', margin: '0 auto' }}>
       <h1>CropSense</h1>
       <p style={{ color: 'gray' }}>Logged in as {user.phone_number}</p>
+
       <h3>Leaf Disease Photo Check</h3>
 
       <input type="file" accept="image/*" onChange={handleFileChange} style={{ marginBottom: '20px' }} />
@@ -170,6 +229,59 @@ function App() {
               )}
             </>
           )}
+        </div>
+      )}
+
+      <hr style={{ margin: '40px 0' }} />
+
+      <h3>Weather-Based Preventive Alerts</h3>
+
+      <button onClick={handleUseMyLocation} disabled={weatherLoading} style={{ marginBottom: '15px' }}>
+        {weatherLoading ? 'Detecting location...' : '📍 Use My Location'}
+      </button>
+
+      <p style={{ fontSize: '13px', color: 'gray' }}>or enter manually:</p>
+
+      <input
+        type="text"
+        placeholder="Enter your city/village name"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        style={{ padding: '10px', width: '80%', marginBottom: '10px' }}
+      />
+      <br />
+      <button onClick={handleCheckWeather} disabled={!city || weatherLoading}>
+        {weatherLoading ? 'Checking...' : 'Check Weather Risk'}
+      </button>
+
+      {weatherError && (
+        <p style={{ color: 'red', marginTop: '15px' }}>{weatherError}</p>
+      )}
+
+      {weather && (
+        <div style={{ marginTop: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', textAlign: 'left' }}>
+          <p><strong>{weather.city}</strong></p>
+          <p>Temperature: {weather.temperature}°C</p>
+          <p>Humidity: {weather.humidity}%</p>
+          <p>Conditions: {weather.conditions}</p>
+
+          <div style={{ marginTop: '15px' }}>
+            {weather.alerts.map((alert, index) => (
+              <div
+                key={index}
+                style={{
+                  padding: '10px',
+                  marginBottom: '10px',
+                  borderLeft: `4px solid ${alertColor(alert.level)}`,
+                  backgroundColor: '#f9f9f9',
+                  color: '#333'
+                }}
+              >
+                <strong style={{ textTransform: 'uppercase', color: alertColor(alert.level) }}>{alert.level} risk</strong>
+                <p style={{ margin: '5px 0 0 0' }}>{alert.message}</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

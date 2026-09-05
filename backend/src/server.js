@@ -139,6 +139,7 @@ function getDiseaseRiskAlerts(weatherData) {
   if (humidity > 80 && temp > 20 && temp < 32) {
     alerts.push({
       level: 'high',
+      code: 'fungal_risk',
       message: 'High humidity and warm temperature detected. Conditions are favorable for fungal diseases like blight and leaf mold. Consider preventive fungicide spray and ensure good air circulation.'
     });
   }
@@ -146,6 +147,7 @@ function getDiseaseRiskAlerts(weatherData) {
   if (description.includes('rain') || description.includes('drizzle') || description.includes('thunderstorm')) {
     alerts.push({
       level: 'medium',
+      code: 'rain_risk',
       message: 'Rainy conditions detected. Wet leaves increase risk of bacterial spot and blight spread. Avoid overhead irrigation and monitor plants closely after rain stops.'
     });
   }
@@ -153,6 +155,7 @@ function getDiseaseRiskAlerts(weatherData) {
   if (temp > 35) {
     alerts.push({
       level: 'medium',
+      code: 'heat_stress',
       message: 'High temperature detected. Heat stress can weaken plants and increase susceptibility to pests like spider mites. Ensure adequate watering.'
     });
   }
@@ -160,6 +163,7 @@ function getDiseaseRiskAlerts(weatherData) {
   if (alerts.length === 0) {
     alerts.push({
       level: 'low',
+      code: 'low_risk',
       message: 'Current weather conditions show low disease risk. Continue regular monitoring.'
     });
   }

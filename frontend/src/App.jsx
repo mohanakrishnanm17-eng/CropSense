@@ -19,6 +19,69 @@ const DISEASE_TRANSLATIONS = {
   'Tomato__Tomato_YellowLeaf__Curl_Virus': { en: 'Tomato - Yellow Leaf Curl Virus', ta: 'தக்காளி - மஞ்சள் இலை சுருள் வைரஸ்' }
 };
 
+const TREATMENT_RECOMMENDATIONS = {
+  'Pepper__bell___Bacterial_spot': {
+    en: ['Remove and destroy infected leaves', 'Apply copper-based bactericide spray', 'Avoid overhead watering; water at soil level', 'Rotate crops next season, avoid planting peppers in the same spot'],
+    ta: ['பாதிக்கப்பட்ட இலைகளை அகற்றி அழிக்கவும்', 'காப்பர் அடிப்படையிலான மருந்தைத் தெளிக்கவும்', 'மேலிருந்து நீர் பாய்ச்சுவதைத் தவிர்த்து, வேர் பகுதியில் மட்டும் நீர் ஊற்றவும்', 'அடுத்த பருவத்தில் அதே இடத்தில் மிளகாய் நடாமல் பயிர் சுழற்சி செய்யவும்']
+  },
+  'Pepper__bell___healthy': {
+    en: ['No treatment needed', 'Continue regular monitoring and balanced fertilization'],
+    ta: ['சிகிச்சை தேவையில்லை', 'வழக்கமான கண்காணிப்பையும் சரிவிகித உரமிடுதலையும் தொடரவும்']
+  },
+  'Potato___Early_blight': {
+    en: ['Remove infected lower leaves promptly', 'Apply fungicide containing chlorothalonil or mancozeb', 'Ensure proper spacing between plants for air circulation', 'Avoid wetting foliage while watering'],
+    ta: ['பாதிக்கப்பட்ட கீழ் இலைகளை உடனடியாக அகற்றவும்', 'குளோரோதலோனில் அல்லது மான்கோசெப் கொண்ட பூஞ்சைக்கொல்லியைத் தெளிக்கவும்', 'செடிகளுக்கிடையே போதுமான இடைவெளி விட்டு காற்றோட்டத்தை உறுதி செய்யவும்', 'நீர் பாய்ச்சும்போது இலைகள் நனையாமல் பார்த்துக்கொள்ளவும்']
+  },
+  'Potato___healthy': {
+    en: ['No treatment needed', 'Continue regular monitoring and balanced fertilization'],
+    ta: ['சிகிச்சை தேவையில்லை', 'வழக்கமான கண்காணிப்பையும் சரிவிகித உரமிடுதலையும் தொடரவும்']
+  },
+  'Potato___Late_blight': {
+    en: ['Remove and destroy infected plants immediately to prevent spread', 'Apply fungicide containing metalaxyl or copper compounds', 'Avoid overhead irrigation, especially in humid weather', 'Improve field drainage to reduce moisture'],
+    ta: ['பரவுவதைத் தடுக்க பாதிக்கப்பட்ட செடிகளை உடனடியாக அகற்றி அழிக்கவும்', 'மெட்டாலாக்சில் அல்லது காப்பர் கலவை கொண்ட பூஞ்சைக்கொல்லியைத் தெளிக்கவும்', 'ஈரப்பதம் அதிகமான வானிலையில் மேலிருந்து நீர் பாய்ச்சுவதைத் தவிர்க்கவும்', 'நிலத்தில் நீர் தேங்காமல் வடிகால் வசதியை மேம்படுத்தவும்']
+  },
+  'Tomato_Bacterial_spot': {
+    en: ['Remove infected leaves and fruit', 'Apply copper-based bactericide spray', 'Avoid working in fields when plants are wet', 'Use disease-free seeds/seedlings next season'],
+    ta: ['பாதிக்கப்பட்ட இலைகள் மற்றும் காய்களை அகற்றவும்', 'காப்பர் அடிப்படையிலான மருந்தைத் தெளிக்கவும்', 'செடிகள் ஈரமாக இருக்கும்போது வயலில் வேலை செய்வதைத் தவிர்க்கவும்', 'அடுத்த பருவத்தில் நோயற்ற விதைகள்/நாற்றுகளைப் பயன்படுத்தவும்']
+  },
+  'Tomato_Early_blight': {
+    en: ['Remove infected lower leaves promptly', 'Apply fungicide containing chlorothalonil or mancozeb', 'Mulch around base to prevent soil splashing onto leaves', 'Ensure proper plant spacing for air circulation'],
+    ta: ['பாதிக்கப்பட்ட கீழ் இலைகளை உடனடியாக அகற்றவும்', 'குளோரோதலோனில் அல்லது மான்கோசெப் கொண்ட பூஞ்சைக்கொல்லியைத் தெளிக்கவும்', 'மண் இலைகளில் தெறிக்காமல் இருக்க அடிப்பகுதியில் மல்ச் இடவும்', 'காற்றோட்டத்திற்காக செடிகளுக்கிடையே போதுமான இடைவெளி விடவும்']
+  },
+  'Tomato_healthy': {
+    en: ['No treatment needed', 'Continue regular monitoring and balanced fertilization'],
+    ta: ['சிகிச்சை தேவையில்லை', 'வழக்கமான கண்காணிப்பையும் சரிவிகித உரமிடுதலையும் தொடரவும்']
+  },
+  'Tomato_Late_blight': {
+    en: ['Remove and destroy infected plants immediately to prevent spread', 'Apply fungicide containing metalaxyl or copper compounds', 'Avoid overhead irrigation, especially in humid weather', 'Space plants well for good air circulation'],
+    ta: ['பரவுவதைத் தடுக்க பாதிக்கப்பட்ட செடிகளை உடனடியாக அகற்றி அழிக்கவும்', 'மெட்டாலாக்சில் அல்லது காப்பர் கலவை கொண்ட பூஞ்சைக்கொல்லியைத் தெளிக்கவும்', 'ஈரப்பதம் அதிகமான வானிலையில் மேலிருந்து நீர் பாய்ச்சுவதைத் தவிர்க்கவும்', 'நல்ல காற்றோட்டத்திற்காக செடிகளுக்கிடையே இடைவெளி விடவும்']
+  },
+  'Tomato_Leaf_Mold': {
+    en: ['Improve ventilation, especially in greenhouses/polyhouses', 'Reduce humidity around plants', 'Apply fungicide containing chlorothalonil', 'Remove and destroy heavily infected leaves'],
+    ta: ['காற்றோட்டத்தை மேம்படுத்தவும், குறிப்பாக பாலிஹவுஸ்/பசுமை இல்லங்களில்', 'செடிகளைச் சுற்றியுள்ள ஈரப்பதத்தைக் குறைக்கவும்', 'குளோரோதலோனில் கொண்ட பூஞ்சைக்கொல்லியைத் தெளிக்கவும்', 'கடுமையாக பாதிக்கப்பட்ட இலைகளை அகற்றி அழிக்கவும்']
+  },
+  'Tomato_Septoria_leaf_spot': {
+    en: ['Remove infected lower leaves promptly', 'Apply fungicide containing chlorothalonil or copper', 'Avoid overhead watering', 'Rotate crops, avoid planting tomatoes in the same spot next season'],
+    ta: ['பாதிக்கப்பட்ட கீழ் இலைகளை உடனடியாக அகற்றவும்', 'குளோரோதலோனில் அல்லது காப்பர் கொண்ட பூஞ்சைக்கொல்லியைத் தெளிக்கவும்', 'மேலிருந்து நீர் பாய்ச்சுவதைத் தவிர்க்கவும்', 'அடுத்த பருவத்தில் அதே இடத்தில் தக்காளி நடாமல் பயிர் சுழற்சி செய்யவும்']
+  },
+  'Tomato_Spider_mites_Two_spotted_spider_mite': {
+    en: ['Spray plants with water to dislodge mites', 'Apply neem oil or insecticidal soap', 'Introduce natural predators like ladybugs if possible', 'Avoid excessive nitrogen fertilizer which attracts mites'],
+    ta: ['பூச்சிகளை அகற்ற செடிகளில் தண்ணீர் தெளிக்கவும்', 'வேப்பெண்ணெய் அல்லது பூச்சி எதிர்ப்பு சோப்பைத் தெளிக்கவும்', 'முடிந்தால் லேடிபக் போன்ற இயற்கை எதிரிகளை அறிமுகப்படுத்தவும்', 'பூச்சிகளை ஈர்க்கும் அதிக நைட்ரஜன் உரத்தைத் தவிர்க்கவும்']
+  },
+  'Tomato__Target_Spot': {
+    en: ['Remove and destroy infected leaves', 'Apply fungicide containing chlorothalonil or mancozeb', 'Ensure good air circulation between plants', 'Avoid overhead watering'],
+    ta: ['பாதிக்கப்பட்ட இலைகளை அகற்றி அழிக்கவும்', 'குளோரோதலோனில் அல்லது மான்கோசெப் கொண்ட பூஞ்சைக்கொல்லியைத் தெளிக்கவும்', 'செடிகளுக்கிடையே நல்ல காற்றோட்டத்தை உறுதி செய்யவும்', 'மேலிருந்து நீர் பாய்ச்சுவதைத் தவிர்க்கவும்']
+  },
+  'Tomato__Tomato_mosaic_virus': {
+    en: ['Remove and destroy infected plants immediately (no cure exists)', 'Wash hands and tools with soap before handling other plants', 'Control aphids and other insects that spread the virus', 'Use virus-resistant tomato varieties next season'],
+    ta: ['பாதிக்கப்பட்ட செடிகளை உடனடியாக அகற்றி அழிக்கவும் (சிகிச்சை இல்லை)', 'மற்ற செடிகளைத் தொடுவதற்கு முன் கைகளையும் கருவிகளையும் சோப்புடன் கழுவவும்', 'வைரஸைப் பரப்பும் பேன் போன்ற பூச்சிகளைக் கட்டுப்படுத்தவும்', 'அடுத்த பருவத்தில் வைரஸ் எதிர்ப்பு தக்காளி வகைகளைப் பயன்படுத்தவும்']
+  },
+  'Tomato__Tomato_YellowLeaf__Curl_Virus': {
+    en: ['Remove and destroy infected plants immediately (no cure exists)', 'Control whiteflies, which spread this virus, using yellow sticky traps or neem oil', 'Use virus-resistant tomato varieties next season', 'Use insect-proof netting for young seedlings'],
+    ta: ['பாதிக்கப்பட்ட செடிகளை உடனடியாக அகற்றி அழிக்கவும் (சிகிச்சை இல்லை)', 'இந்த வைரஸைப் பரப்பும் வெள்ளை ஈக்களை மஞ்சள் ஒட்டும் பொறிகள் அல்லது வேப்பெண்ணெய் மூலம் கட்டுப்படுத்தவும்', 'அடுத்த பருவத்தில் வைரஸ் எதிர்ப்பு தக்காளி வகைகளைப் பயன்படுத்தவும்', 'இளம் நாற்றுகளுக்கு பூச்சி தடுப்பு வலையைப் பயன்படுத்தவும்']
+  }
+};
+
 const ALERT_TRANSLATIONS = {
   fungal_risk: {
     en: 'High humidity and warm temperature detected. Conditions are favorable for fungal diseases like blight and leaf mold. Consider preventive fungicide spray and ensure good air circulation.',
@@ -53,6 +116,9 @@ const UI_TEXT = {
     confidence: 'Confidence',
     aiFocus: 'AI Focus Area:',
     aiFocusNote: 'Red/yellow areas show where the AI detected disease patterns',
+    treatmentTitle: 'Recommended Treatment:',
+    viewTreatment: 'View Recommended Treatment',
+    hideTreatment: 'Hide Treatment',
     weatherTitle: 'Weather-Based Preventive Alerts',
     useLocation: '📍 Use My Location',
     detecting: 'Detecting location...',
@@ -81,6 +147,9 @@ const UI_TEXT = {
     confidence: 'நம்பகத்தன்மை',
     aiFocus: 'AI கவனம் செலுத்திய பகுதி:',
     aiFocusNote: 'சிவப்பு/மஞ்சள் பகுதிகள் AI நோய் தடயங்களை கண்டறிந்த இடங்களைக் காட்டுகின்றன',
+    treatmentTitle: 'பரிந்துரைக்கப்படும் சிகிச்சை:',
+    viewTreatment: 'பரிந்துரைக்கப்பட்ட சிகிச்சையைக் காண்க',
+    hideTreatment: 'சிகிச்சையை மறை',
     weatherTitle: 'வானிலை அடிப்படையிலான தடுப்பு எச்சரிக்கைகள்',
     useLocation: '📍 எனது இருப்பிடத்தைப் பயன்படுத்து',
     detecting: 'இருப்பிடம் கண்டறியப்படுகிறது...',
@@ -117,6 +186,7 @@ function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
   const [weatherError, setWeatherError] = useState(null);
+  const [showTreatment, setShowTreatment] = useState(false);
   const [weatherLoading, setWeatherLoading] = useState(false);
 
   const handleSendOtp = async () => {
@@ -170,6 +240,7 @@ function App() {
     setLoading(true);
     setError(null);
     setResult(null);
+    setShowTreatment(false);
 
     const formData = new FormData();
     formData.append('file', selectedFile);
@@ -260,6 +331,11 @@ function App() {
   const diseaseLabel = (diseaseCode) => {
     const translation = DISEASE_TRANSLATIONS[diseaseCode];
     return translation ? translation[lang] : diseaseCode;
+  };
+
+  const treatmentSteps = (diseaseCode) => {
+    const treatment = TREATMENT_RECOMMENDATIONS[diseaseCode];
+    return treatment ? treatment[lang] : null;
   };
 
   const LanguageToggle = () => (
@@ -362,6 +438,25 @@ function App() {
                 </div>
               )}
             </>
+          )}
+        </div>
+      )}
+
+      {result && result.valid !== false && treatmentSteps(result.disease) && (
+        <div style={{ marginTop: '20px' }}>
+          <button onClick={() => setShowTreatment(!showTreatment)}>
+            {showTreatment ? t.hideTreatment : t.viewTreatment}
+          </button>
+
+          {showTreatment && (
+            <div style={{ marginTop: '15px', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', textAlign: 'left' }}>
+              <p style={{ fontWeight: 'bold' }}>{t.treatmentTitle}</p>
+              <ul style={{ paddingLeft: '20px' }}>
+                {treatmentSteps(result.disease).map((step, index) => (
+                  <li key={index} style={{ marginBottom: '6px' }}>{step}</li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       )}
